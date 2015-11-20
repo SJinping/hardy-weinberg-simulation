@@ -1,6 +1,10 @@
 Instructions
 
+<<<<<<< HEAD
 Overview 
+=======
+Overview
+>>>>>>> 1763f5388e2e72648577e917f353aaf9cb704dd5
 This C++ program simulates gene evolution that analyzed in the paper with or without spatial constraint.
 
 The simulation procedure is divided into four stages: (i) initiation, (ii) mate selection, (iii) gamete generation and (iv) birth of the next generation.
@@ -9,6 +13,7 @@ An n×n matrix is used to simulate the mating procedure. Each element of the mat
 
 Simulation parameters are input manually and results are recorded in local text files.
 
+<<<<<<< HEAD
 progmain.cpp: main function and program entry. Neighbor type and spatial condition are defined in _tmain() function. Initialized parameters are also input in _tmain().
 
 flower.h: Defines flower class, which implements mating progress, and files class, which deals with iostream.
@@ -27,3 +32,35 @@ All codes are available on github.
 
 Environment Settings
 This program has been successfully executed in the following environment. Compiler: Microsoft Visual Studio 2013 OS: Windows 8 Enterprise, 64-bit
+=======
+progmain.cpp: 
+main function and program entry. Neighbor type and spatial condition are defined in _tmain() function. Initialized parameters are also input in _tmain().
+
+flower.h: 
+Defines flower class, which implements mating progress, and files class, which deals with iostream.
+
+function.h: 
+Defines global functions that shared by all files.
+
+Procedure
+Input:
+1. neighbor type should be predefined in progrmain.cpp.
+2. after neighbor type is defined, run progmain.cpp.
+3. In the end, the number of columns and rows, simulation times and random seed are requested to input in terminal.
+4. When simulation finishes, the terminal will close automatically.
+
+Output:
+The number of generations for each simulation procedure and total time cost are recorded in generation.txt file. It will also generate a folder for each simulation named 00x, x for indexing. 
+
+In each simulation folder, there are two text files named distribution and scores respectively.   distribution records the constitution of genes for each element in all loop. scores records the number of different genes for each loop.
+
+Code Access
+All codes are available on github.
+
+
+Environment Settings
+
+This program has been successfully executed in the following environment.
+Compiler: Microsoft Visual Studio 2013
+OS: Windows 8 Enterprise, 64-bit
+>>>>>>> 1763f5388e2e72648577e917f353aaf9cb704dd5
