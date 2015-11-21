@@ -82,7 +82,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="progmain.cpp" />
-    <ClCompile Include="程式狀況.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="flower.h" />

@@ -5,7 +5,7 @@
 #include<iostream>
 using namespace std;		//cin cout
 #using <mscorlib.dll>		
-#include <time.h>				//srand(time(NULL));
+#include <time.h>			//srand(time(NULL));
 #include <stdlib.h>			//srand(time(NULL));
 
 #include "flower.h"
@@ -16,8 +16,8 @@ using namespace std;		//cin cout
 void _tmain()
 {
 	//parameters
-	int condition1=1;	//(1)spatial constraintsconstraints (2)non-spatial constraints
-	int condition2=1;	//(1)4-neighbour (2)6-neighbour (3)8-neighbour
+	int condition1 = 1;	//(1)spatial constraints (2)Periodic Boundary Condition
+	int condition2 = 1;	//(1)4-neighbour (2)6-neighbour (3)8-neighbour
 
 	
 	int 				col; 
@@ -25,8 +25,8 @@ void _tmain()
 	int 				times = 1;
 	int 				nnth = 0;
 	int 				seeding;
-	DateTime 		time1;				// Time begins
-	DateTime 		time2;				// Time ends
+	DateTime 			time1;				// Time begins
+	DateTime 			time2;				// Time ends
 	
 
 	cout<<"col: ";	
@@ -70,7 +70,7 @@ void _tmain()
 				
 		// mating
 		while(fw.n_a>0&&fw.n_b>0)
-    {
+    	{
 			nnth++;
 
 			fw.transfer();
@@ -79,13 +79,13 @@ void _tmain()
 			//wfiles
 			fil1->wfile1(fw,nnth);	fil2->wfile2(fw,nnth);
 						
-     };
+     	}
 		
 
 		sw3->WriteLine(nnth.ToString());
 		nnth=0;
 		seeding++;
-		};
+	}
 		
 
 	
@@ -96,5 +96,5 @@ void _tmain()
 	//wfiles
 	fil1->end();fil2->end();
 
-	};
+}
 

@@ -13,53 +13,42 @@ using namespace std;			//ofstream
 class flower
 {
 public:
-	
 	int col,row,bounds;				
 	int condition1,condition2;
 	
 	int n_a,n_b;						// The number of A and a
-	int fw_num[3];					// Total number of flowers
-	int sur_no1,sur_no2;		// The number of neibours
-	
-	
-	int **location1;				// Location of flowers
-	int **location2;				// int temp	used:transfer
-	
-	
-	
-	
+	int fw_num[3];						// Total number of flowers
+	int sur_no1,sur_no2;				// The number of neibours
 
-		
+	int **location1;					// Location of flowers
+	int **location2;					// int temp	used:transfer
 	
-
 	
 	// Initialize
 	flower(int i_col,int i_row,int cond1,int cond2)
-  {
-     col=i_col;
-     row=i_row;
-     condition1=cond1;
-     condition2=cond2;
+  	{
+	    col=i_col;
+	    row=i_row;
+	    condition1=cond1;
+	    condition2=cond2;
 
-			location1=new int*[col];
-			for(int i=0;i<col;i++)
-			{
-				location1[i]=new int[row];
-			}
-			
-			location2=new int*[col];
-			for(int i=0;i<col;i++)
-			{
-				location2[i]=new int[row];
-			}
-						
-			if(cond2==1){sur_no1=4;sur_no2=8;};
-			if(cond2==2){sur_no1=6;sur_no2=12;}; 
-			if(cond2==3){sur_no1=8;sur_no2=16;};
-			if(cond2==4){sur_no1=24;/*sur_no2=;*/};
-						
-			
-		};
+		location1 = new int*[col];
+		for(int i=0;i<col;i++)
+		{
+			location1[i]=new int[row];
+		}
+		
+		location2=new int*[col];
+		for(int i=0;i<col;i++)
+		{
+			location2[i]=new int[row];
+		}
+					
+		if(cond2==1){sur_no1=4;sur_no2=8;};
+		if(cond2==2){sur_no1=6;sur_no2=12;}; 
+		if(cond2==3){sur_no1=8;sur_no2=16;};
+		if(cond2==4){sur_no1=24;/*sur_no2=;*/};							
+	}
 	
 	
 
@@ -70,15 +59,14 @@ public:
 	// The elements in location1 will be initialized as aa(0), Aa(1) or AA(2)
 	void init(int cond)
 	{
-		if(cond==1)
-			for(int i=0;i<col;i++)
-				for(int j=0;j<row;j++)
-				{
-					location1[i][j]=0;
-					for(int k=0;k<2;k++)	
-						location1[i][j]+=rannum(2)-1;
-				};
-	};
+		for(int i=0;i<col;i++)
+			for(int j=0;j<row;j++)
+			{
+				location1[i][j]=0;
+				for(int k=0;k<2;k++)	
+					location1[i][j] += rannum(2)-1;
+			}	
+	}
 		
 
 	/* 
@@ -95,7 +83,7 @@ public:
 				fw_num[location1[i][j]]++;
 		n_a=fw_num[2]*2+fw_num[1];
 		n_b=fw_num[0]*2+fw_num[1];
-	};
+	}
 	
 			
 		
@@ -103,7 +91,7 @@ public:
 	/*
 	** Mating
 	** condition1 == 1: spatial constraints.
-	** condition1 == 2: non-spatial constraints.
+	** condition1 == 2: Periodic Boundary Condition
 	*/
 	void transfer(void)
 	{
@@ -115,22 +103,28 @@ public:
 		for(int i=0;i<col;i++)
 			for(int j=0;j<row;j++)
 			{
-		        if(condition1==1)
+				// spatial constraints. Randomly mated by any other element
+		        if(condition1 == 1)
 		        {
+					int ran_col = 0;
+					int ran_row = 0;
 		            do
 		            {
-		            	surround=rannum(sur_no1);
+		            	ran_col = rannum(col) - 1;
+		            	ran_row = rannum(row) - 1;
 		            }
-		            while(bound(i+pos1(surround,i,1), j+pos1(surround,i,2), col,row) == 0);    
-						}
+		            while(ran_col == i && ran_row == j);   
+
+		             location1[i][j] = trans(location2[i][j])
+									+ trans(location2[ran_col][ran_row]); 
+				}
 				
-		        if(condition1==2)
+		        if(condition1 == 2)
 		        {
 		            surround=rannum(sur_no1);
-						}
-
-				location1[i][j] = trans(location2[i][j])
-								+ trans(location2[(i+pos1(surround,i,1)+col)%col][(j+pos1(surround,i,2)+row)%row]);
+		            location1[i][j] = trans(location2[i][j])
+									+ trans(location2[(i+pos1(surround,i,1)+col)%col][(j+pos1(surround,i,2)+row)%row]);
+				}
 			}
 	};
 
