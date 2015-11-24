@@ -30,9 +30,6 @@ The number of generations for each simulation procedure and total time cost are 
 
 In each simulation folder, there are two text files named distribution and scores respectively.   distribution records the constitution of genes for each element in all loop. scores records the number of different genes for each loop.
 
-
-
-
 Code Access
 All codes are available on github.
 https://github.com/SJinping/hardy-weinberg-simulation
