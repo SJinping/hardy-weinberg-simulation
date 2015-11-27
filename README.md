@@ -32,7 +32,7 @@ In each simulation folder, there are two text files named distribution and score
 
 Code Access
 All codes are available on github.
-https://github.com/SJinping/hardy-weinberg-simulation
+https://github.com/weipane/hardy-weinberg-simulation
 
 Environment Settings
 
